@@ -250,7 +250,7 @@ footer{
 @media screen and (max-width: 768px){
     .Opening {
         width: 435px;
-        background-color: lightgray;
+
     }
 
     .myName {
@@ -319,7 +319,7 @@ footer{
     .Opening {
         width: auto;
         height: 700px;
-        background-color: pink;
+
     }
 
     .myPicture{
