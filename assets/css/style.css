@@ -133,8 +133,11 @@ input{
     background: darkslategray;
     border: 2px solid black;
     z-index: 1;
-    background-image:url("../images/file-1.jpeg");
-    background-size: 150px;
+    background-image:url("../images/Psychic.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+    
   }
 
 .box-2{
@@ -223,7 +226,7 @@ footer{
     }
     .Opening {
         margin: 20px 0px 0px 0px;
-        width: 500px;
+        width: 575px;
     }
 
     .box-3{
@@ -249,7 +252,7 @@ footer{
 
 @media screen and (max-width: 768px){
     .Opening {
-        width: 435px;
+        width: 475px;
 
     }
 
@@ -291,6 +294,7 @@ footer{
         margin-left: auto;
         margin-right: auto;
         display: block;
+        position:static;
       }
 
       li{
