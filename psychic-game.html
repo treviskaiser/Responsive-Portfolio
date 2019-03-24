@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="UTF-8"> 
+
+
+    </head>
+
+    <body>
+        
+        <h1>The Psychic Game</h1>
+        <h3>What letter am I thinking?</h3>
+        
+        <p id="wins"></p>
+        <p id="losses"></p>
+        <p id="guesses"></p>
+        <p id="computerLetter"></p>
+        <p id="missed"></p>
+        <p id="avaliableLetters"></p>
+
+        <script type="text/javascript">
+
+            // Variables: Possible letters, # of wins, # of losses, guesses remaining, random letter
+            var letter = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+            var wins = 0;
+            var losses = 0;
+            var guesses = 9;
+            var computerLetter = letter[Math.floor(Math.random() * letter.length)];
+            var miss = [];
+            var all = [];
+            var avaliableLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+            
+
+            updateScore();
+            updateGuesses();
+            updateMissed();
+            avaliableLetter();
+
+           
+
+            function updateScore() {
+                        document.getElementById("wins").innerHTML = "Wins: " + wins;
+                        document.getElementById("losses").innerHTML = "Losses: " + losses;
+                        
+                        }  
+            
+            function updateGuesses() {
+                document.getElementById("guesses").innerHTML = "Remaining guesses: " + guesses;
+            }
+
+            function updateMissed(){
+                document.getElementById("missed").innerHTML = "Letters guessed: " + miss;
+            }
+
+            function avaliableLetter(){
+                    document.getElementById("avaliableLetters").innerHTML = "Avaliable Letters: " + avaliableLetters;
+            }
+
+
+            document.onkeyup = function(event){
+
+                var userGuess = event.key;
+                
+                if (userGuess === computerLetter) {
+                alert("Correct!");
+                wins++;
+                updateScore();
+                guesses = 9;
+                updateGuesses();
+                computerLetter = letter[Math.floor(Math.random() * letter.length)];
+                miss = [];
+                updateMissed();
+                avaliableLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+                avaliableLetter();
+                }
+
+                else if(guesses <= 0){
+                    alert("You lose!")
+                    losses ++;
+                    updateScore();
+                    guesses = 9;
+                    updateGuesses();
+                    computerLetter = letter[Math.floor(Math.random() * letter.length)];
+                    miss = [];
+                    updateMissed();
+                    avaliableLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+                    avaliableLetter();
+                }
+
+                else { 
+                    if (miss.includes(userGuess) === false){
+                        miss.push(userGuess);
+                        updateMissed(); 
+                        avaliableLetters.splice(avaliableLetters.indexOf(userGuess),1);
+                        avaliableLetter();  
+                        guesses --;
+                        updateGuesses();
+                    }
+                    
+                    
+                }
+            }
+        </script>
+        
+
+        
+
+
+    </body>
+    
+</html>
